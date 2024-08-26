@@ -9,25 +9,28 @@
         *{margin: 0; padding: 0;}
         .hd{background-color: blueviolet;}
         a:link, a:visited{text-decoration: none; color: #000;}
+        .clear:after{
+            content:"";
+            display: block;clear: both;
+        }
         ul,li{list-style: none;}
         .menu{width: 1360px; margin: 0 auto; background-color: salmon;}
-        .menu::after{content: ""; display: block;}
         .menu > li{float: left; width: 20%;}
+        /* .menu:after{content: ""; display: block;} */
         .menu > li > a{line-height: 60px; display: block; width: 100%; text-align: center;}
         .menu a:hover{background-color: forestgreen; color: white;}
-        .visual{background-color: gold; height: 100px;}
+        .visual{background-color: gold; height: 400px;}
     </style>
 </head>
 
 <body>
     <header class="hd">
-        <ul class="menu">
-            <li>
-                <a href="">menu1</a>
-                <a href="">menu2</a>
-                <a href="">menu3</a>
-                <a href="">menu4</a>
-                <a href="">menu5</a>
+        <ul class="menu clear">
+                <li><a href="">menu1</a></li>
+                <li><a href="">menu2</a></li>
+                <li><a href="">menu3</a></li>
+                <li><a href="">menu4</a></li>
+                <li><a href="">menu5</a></li>
             </li>
         </ul>
     </header>
