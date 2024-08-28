@@ -1,0 +1,65 @@
+@charset "utf-8";
+
+.container {
+    width: 1360px;
+    margin: 0 auto;
+}
+
+.bg-gray {
+    background-color: gray;
+}
+
+.bg-orange {
+    background-color: orange;
+}
+
+.bg-skyblue {
+    background-color: skyblue;
+}
+
+.hd{
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.menuWrap {
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    padding: 10px 0;
+}
+
+.menuWrap .gnb ul {
+    display: flex;
+}
+
+.menuWrap .gnb li {
+    width: 150px;
+    height: 50px;
+}
+
+.menuWrap .gnb a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.menuWrap .sns {
+    display: flex;
+    align-self: center;
+    /*얘만 딱 잡힌다*/
+    gap:10px;
+}
+
+.menuWrap .sns li {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    background-color: #000000;
+    color: whitesmoke;
+}
+
+.visual{height: 400px;}
