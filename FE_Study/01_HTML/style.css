@@ -5,6 +5,14 @@
     margin: 0 auto;
 }
 
+.hd {
+    position: fixed;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    background-color: white;
+    z-index: 1;
+}
+
 .bg-gray {
     background-color: gray;
 }
@@ -15,10 +23,6 @@
 
 .bg-skyblue {
     background-color: skyblue;
-}
-
-.hd{
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
 .menuWrap {
@@ -48,7 +52,7 @@
     display: flex;
     align-self: center;
     /*얘만 딱 잡힌다*/
-    gap:10px;
+    gap: 10px;
 }
 
 .menuWrap .sns li {
@@ -62,4 +66,47 @@
     color: whitesmoke;
 }
 
-.visual{height: 400px;}
+.visual {
+    height: 100vh;
+    min-height: 400px;
+}
+
+.top {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    background-color: rebeccapurple;
+    border-radius: 50%;
+}
+
+.banner {
+    padding-top: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.banner .card {
+    width: 384px;
+    height: 580px;
+}
+
+.banner .img-wrap img {
+    width: 384px;
+    height: 450px;
+}
+
+.banner .card .card-text {
+    padding: 10px 20px;
+}
+
+.banner .card .card-text h3 {
+    margin-bottom: 10px;
+}
+
+.banner .card .img-wrap:hover img{
+    transform: translateY(-30px) scale(1.2) rotate(100deg);
+    transition: 1s;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3);
+}
