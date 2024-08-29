@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function fn1(fn) {
+        //     console.log(1)
+        //     fn()
+        // }
+        // function fn2() {
+        //     console.log(2)
+        // }
+        // fn1(fn2);
+
+        const pro = new Promise(function (a, b) {const aaa = {a:10, b:20}; a(aaa);  })
+
+        pro.then(function (a) {
+            console.log("성공",a);
+        }).catch(function () {
+            console.log("실패");
+
+        })
+
+        const pro2 = new Promise((resolve, reject) => {
+            setTimeout(function () {
+                resolve("hi")
+            },3000)
+        })
+
+        pro2.then(function(v){console.log(v);
+        })
+
+    </script>
+</body>
+
+</html>
