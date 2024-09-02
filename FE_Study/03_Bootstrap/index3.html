@@ -21,7 +21,7 @@
 </head>
 
 <body>
-  
+
   <nav class="navbar navbar-expand-lg bg-body-tertiary shadow header">
     <div class="container">
       <a class="navbar-brand" href="#">
@@ -258,7 +258,7 @@
         </div>
       </div>
       <hr>
-      <div class="row">
+      <div class="row mb-5">
         <div class="col-md-6">
           <ul class="d-flex justify-contents-center justify-content-md-start">
             <li class="px-2"><a href="javascript:void(0)">Privacy</a></li>
@@ -276,82 +276,86 @@
           </ul>
         </div>
       </div>
-
+      <div class="row">
+        <div class="col-md-8 offset-md-2 text-center">
+          <p class="small">Lorem ipsum dolor sit.<br>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta,
+            eligendi.</p>
+        </div>
+      </div>
     </div>
-  </div>
 
 
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
-    integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
-    integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.2.0/jquery.magnific-popup.min.js"
-    integrity="sha512-fCRpXk4VumjVNtE0j+OyOqzPxF1eZwacU3kN3SsznRPWHgMTSSo7INc8aY03KQDBWztuMo5KjKzCFXI/a5rVYQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script>
-    $(window).scroll(function () {
-      let scroll = $(window).scrollTop()
-      console.log(scroll);
-      if(scroll > 300){
-        $(".header").addClass("fixed-top")
-      } else{
-        $(".header").removeClass("fixed-top")
-      }
-    })
-
-    function hScroll() {
-      
-    }
-
-    const btns = $(".portfolio .btn-group button")
-    btns.click(function () {
-      let i = $(this).index()
-      console.log(i);
-      btns.removeClass("active")
-      btns.eq(i).addClass("active")
-
-      let selector = btns.eq(i).attr("data-filter")
-      console.log(selector)
-
-      $(".portfolio .view").isotope({
-        filter: selector
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+      integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+      integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.2.0/jquery.magnific-popup.min.js"
+      integrity="sha512-fCRpXk4VumjVNtE0j+OyOqzPxF1eZwacU3kN3SsznRPWHgMTSSo7INc8aY03KQDBWztuMo5KjKzCFXI/a5rVYQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+      $(window).scroll(function () {
+        let scroll = $(window).scrollTop()
+        console.log(scroll);
+        if (scroll > 300) {
+          $(".header").addClass("fixed-top")
+        } else {
+          $(".header").removeClass("fixed-top")
+        }
       })
 
-    })
+      function hScroll() {
 
-    $(".view .popup-link").magnificPopup({ type: "image" })
-
-    window.onload = function () {
-      $(".portfolio #btn").trigger("click")
-    }
-
-
-
-    $('.owl-carousel').owlCarousel({
-      loop: true,
-      margin: 10,
-      responsiveClass: true,
-      autoplay: true,
-      responsive: {
-        0: {
-          items: 1,
-        },
-        756: {
-          items: 2,
-        }
       }
-    })
-  </script>
+
+      const btns = $(".portfolio .btn-group button")
+      btns.click(function () {
+        let i = $(this).index()
+        console.log(i);
+        btns.removeClass("active")
+        btns.eq(i).addClass("active")
+
+        let selector = btns.eq(i).attr("data-filter")
+        console.log(selector)
+
+        $(".portfolio .view").isotope({
+          filter: selector
+        })
+
+      })
+
+      $(".view .popup-link").magnificPopup({ type: "image" })
+
+      window.onload = function () {
+        $(".portfolio #btn").trigger("click")
+      }
+
+
+
+      $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        responsiveClass: true,
+        autoplay: true,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          756: {
+            items: 2,
+          }
+        }
+      })
+    </script>
 </body>
 
 </html>
