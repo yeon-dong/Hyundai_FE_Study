@@ -1,4 +1,5 @@
 <template>
+   <NavbarView />
    <div class="container">
       <h3>HOT & NEW</h3>
       <div class="cardWrap">
@@ -17,18 +18,18 @@
          </div>
       </div>
    </div>
-   <div class="modal" v-if="isModal">
-      <div class="inner">
-         <div>{{ data[selectedNum].title }}</div>
-         <hr />
-         <div>subtitle</div>
-         <button v-on:click="isModal = false">닫기</button>
-      </div>
-   </div>
+   <ModalView
+      v-bind:mydata="data"
+      :isModal="isModal"
+      :selectedNum="selectedNum"
+      @closeModal="isModal = false"
+   ></ModalView>
 </template>
 
 <script>
 import mdata from '@/assets/mdata';
+import NavbarView from '@/components/NavbarView.vue';
+import ModalView from '@/components/ModalView.vue';
 export default {
    name: 'appView',
    data() {
@@ -46,6 +47,10 @@ export default {
          this.isModal = true;
          this.selectedNum = num;
       },
+   },
+   components: {
+      NavbarView,
+      ModalView,
    },
 };
 </script>
@@ -172,11 +177,11 @@ h3 {
          img {
             display: block;
             width: 100%;
-            transition: 2s;
+            transition: 10s;
          }
          &:hover img {
             transform: scale(10);
-            transform: rotate3d(3, 2, 3, 7000deg);
+            transform: rotate3d(3, 2, 3, 120000deg);
          }
       }
       .cardText {
@@ -202,27 +207,6 @@ h3 {
          border-radius: 5px;
          font-weight: bold;
          color: #ffffff;
-      }
-   }
-}
-
-.modal {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   position: fixed;
-   background-color: rgba(0, 0, 0, 0.3);
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   .inner {
-      background-color: #fff;
-      width: 400px;
-      padding: 10px 16px;
-      border-radius: 16px;
-      button {
-         width: 100%;
       }
    }
 }
