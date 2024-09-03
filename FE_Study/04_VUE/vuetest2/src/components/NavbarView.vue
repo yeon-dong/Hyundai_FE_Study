@@ -1,18 +1,35 @@
 <template>
    <div class="conWrap">
       <div class="container menu">
-         <a href="#" class="on">영화</a>
-         <a href="#">방송</a>
-         <a href="#">래킹</a>
-         <a href="#">무료</a>
-         <a href="#">이벤트</a>
-         <a href="#">멤버십</a>
+         <a
+            v-for="(item, index) in menuItems"
+            :key="index"
+            :class="{ on: activeIndex == index }"
+            @click="changeActive(index)"
+         >
+            {{ item }}
+         </a>
       </div>
    </div>
 </template>
 
 <script>
-export default {};
+export default {
+   props: {
+      activeIndex: Number, // 부모로부터 활성화된 인덱스 받기
+   },
+   data() {
+      return {
+         menuItems: ['영화', '방송', '랭킹', '무료', '이벤트', '멤버십'], // 메뉴 항목
+      };
+   },
+   methods: {
+      changeActive(index) {
+         // 클릭 시 호출되는 메서드
+         this.$emit('changeActive', index); // 부모에게 인덱스 전달
+      },
+   },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -36,6 +53,7 @@ a:visited {
          position: relative;
          padding: 16px 0;
          padding-right: 40px;
+         cursor: pointer;
       }
       @media screen and (max-width: 560px) {
          a {

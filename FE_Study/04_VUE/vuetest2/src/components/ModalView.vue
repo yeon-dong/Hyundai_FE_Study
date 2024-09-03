@@ -1,9 +1,10 @@
 <template>
    <div class="modal" v-if="isModal">
       <div class="inner">
-         <div>{{ mydata[selectedNum].title }}</div>
+         <div class="movie-title">{{ mydata[selectedNum].title }}</div>
          <hr />
-         <div>subtitle</div>
+         <br />
+         <div class="movie-detail">{{ mydata[selectedNum].detail }}</div>
          <button v-on:click="$emit('closeModal')">닫기</button>
       </div>
    </div>
@@ -38,6 +39,15 @@ export default {
       border-radius: 16px;
       button {
          width: 100%;
+      }
+      .movie-title {
+         padding: 10px;
+         font-size: 20px;
+         font-weight: bold;
+      }
+      .movie-detail {
+         padding: 4px;
+         margin-bottom: 30px;
       }
    }
 }
