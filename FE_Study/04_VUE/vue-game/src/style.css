@@ -1,0 +1,35 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.map-container {
+  width: 1200px;
+  height: 30px;
+  background-color: red;
+  margin: 0 auto;
+  position: relative;
+}
+
+.map-container .top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1200px;
+  height: 30px;
+  background-color: rbga(0, 0, 0, 0);
+}
+
+.map-container .left {
+  width: 30px;
+  height: 600px;
+  background-color: red;
+}
+
+.map-container .right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+  height: 600px;
+  background-color: red;
+}
