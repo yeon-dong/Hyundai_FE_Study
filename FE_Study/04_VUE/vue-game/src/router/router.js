@@ -5,6 +5,8 @@ import Level_2 from "../pages/Level_2.vue";
 import Level_3 from "../pages/Level_3.vue";
 import Level_4 from "../pages/Level_4.vue";
 import Level_5 from "../pages/Level_5.vue";
+import Clear from "../pages/Clear.vue";
+import Level_6 from "../pages/Level_6.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -38,6 +40,16 @@ const router = createRouter({
       path: "/level/5",
       name: "level5",
       component: Level_5,
+    },
+    {
+      path: "/level/6",
+      name: "level6",
+      component: Level_6,
+    },
+    {
+      path: "/clear",
+      name: "clear",
+      component: Clear,
     },
   ],
 });

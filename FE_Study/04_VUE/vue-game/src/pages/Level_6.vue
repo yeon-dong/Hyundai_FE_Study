@@ -1,5 +1,5 @@
 <template>
-  <div class="main-text">LEVEL 5</div>
+  <div class="main-text">LEVEL 6</div>
   <div class="map-container">
     <div class="top" @mouseover="handleMouseOver"></div>
     <div class="left" @mouseover="handleMouseOver"></div>
@@ -9,7 +9,8 @@
     <div class="obstacle-2" @mouseover="handleMouseOver"></div>
     <div class="obstacle-3" @mouseover="handleMouseOver"></div>
     <div class="obstacle-4" @mouseover="handleMouseOver"></div>
-    <div class="finsh-btn" @click="goToLevel6">도착</div>
+    <div class="obstacle-5" @mouseover="handleMouseOver"></div>
+    <div class="finsh-btn" @click="goToClear">도착</div>
   </div>
 </template>
 
@@ -18,8 +19,8 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-const goToLevel6 = () => {
-  router.push("/level/6");
+const goToClear = () => {
+  router.push("/clear");
 };
 
 const handleMouseOver = (event) => {
@@ -40,8 +41,8 @@ const handleMouseOver = (event) => {
 }
 .finsh-btn {
   position: absolute;
-  bottom: -60px;
-  left: 50px;
+  bottom: -550px;
+  right: 50px;
   width: 50px;
   height: 50px;
   background-color: #000000;
@@ -57,7 +58,7 @@ const handleMouseOver = (event) => {
   width: 500px;
   right: 0;
   bottom: -400px;
-  animation: moveObstacle1 2s linear infinite alternate; /* 애니메이션 적용 */
+  animation: moveObstacle1 3s linear infinite alternate; /* 애니메이션 적용 */
 }
 .obstacle-2 {
   position: absolute;
@@ -87,12 +88,22 @@ const handleMouseOver = (event) => {
   animation: moveObstacle4 1s linear infinite alternate; /* 애니메이션 적용 */
 }
 
+.obstacle-5 {
+  position: absolute;
+  background-color: red;
+  height: 300px;
+  width: 30px;
+  left: 600px;
+  bottom: -600px;
+  animation: moveObstacle5 1s linear infinite alternate; /* 애니메이션 적용 */
+}
+
 @keyframes moveObstacle1 {
   0% {
-    right: 0;
+    rotate: 360deg;
   }
   100% {
-    right: 400px;
+    rotate: 0deg;
   }
 }
 
@@ -120,6 +131,21 @@ const handleMouseOver = (event) => {
   }
   100% {
     bottom: -300px;
+  }
+}
+
+@keyframes moveObstacle5 {
+  0% {
+    bottom: -450px;
+  }
+  33% {
+    bottom: -300px;
+  }
+  66% {
+    bottom: -450px;
+  }
+  100% {
+    bottom: -600px;
   }
 }
 </style>

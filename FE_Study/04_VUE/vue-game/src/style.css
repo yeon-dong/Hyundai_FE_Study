@@ -2,6 +2,9 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+:root {
+  overflow: hidden;
+}
 .map-container {
   width: 1200px;
   height: 30px;
