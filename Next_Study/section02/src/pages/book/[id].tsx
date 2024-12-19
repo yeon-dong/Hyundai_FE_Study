@@ -1,7 +1,13 @@
 import { useRouter } from "next/router";
 import style from "./[id].module.css";
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
+import {
+  GetServerSidePropsContext,
+  GetStaticPropsContext,
+  InferGetServerSidePropsType,
+  InferGetStaticPropsType,
+} from "next";
 import fetchOneBooks from "@/lib/fetch-one-books";
+import { notFound } from "next/navigation";
 
 const mockData = {
   id: 1,
@@ -15,11 +21,44 @@ const mockData = {
     "https://shopping-phinf.pstatic.net/main_3888828/38888282618.20230913071643.jpg",
 };
 
-export const getServerSideProps = async (
-  context: GetServerSidePropsContext
-) => {
+// export const getServerSideProps = async (
+//   context: GetServerSidePropsContext
+// ) => {
+//   const id = context.params!.id; // !로 params가 있을 것이다라고 단언해주면 됨
+//   const book = await fetchOneBooks(Number(id)); // 그냥 id는 String 타입으로 가져오기 때문에 변환 필요
+
+//   return {
+//     props: {
+//       book,
+//     },
+//   };
+// };
+//export default function Page({
+//   book,
+// }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+
+export const getStaticPath = () => {
+  return {
+    paths: [
+      { params: { id: "1" } },
+      { params: { id: "2" } },
+      { params: { id: "3" } },
+    ],
+    fallback: true, // 대비책으로 false 면 위에 있는 id 아니면 not found를 반환
+    //"blocking"은 생성해두지 않은 것도 실시간 사전 렌더링 해서 다시 전달해주는 옵션
+    // true 는 props가 없는 페이지를 일단 전달해 주고 props를 나중에 줌
+  };
+};
+
+export const getStaticProps = async (context: GetStaticPropsContext) => {
   const id = context.params!.id; // !로 params가 있을 것이다라고 단언해주면 됨
   const book = await fetchOneBooks(Number(id)); // 그냥 id는 String 타입으로 가져오기 때문에 변환 필요
+
+  if (!book) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
@@ -31,7 +70,11 @@ export const getServerSideProps = async (
 //optional catch all segment
 export default function Page({
   book,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  // 동적으로 여러 개의 페이지를 렌더링-> getStaticPaths 함수로 어떤 id가 올 수 있는지 알려줘야함
+  const router = useRouter();
+
+  if (router.isFallback) return "로딩 중입니다."; // 이런식으로 로딩일 때를 확인 가능능
   if (!book) return "문제가 발생했습니다. 다시 시도하세요.";
 
   const { id, title, subTitle, description, author, publisher, coverImgUrl } =
