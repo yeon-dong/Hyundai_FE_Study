@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import style from "./[id].module.css";
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
+import fetchOneBooks from "@/lib/fetch-one-books";
 
 const mockData = {
   id: 1,
@@ -13,10 +15,27 @@ const mockData = {
     "https://shopping-phinf.pstatic.net/main_3888828/38888282618.20230913071643.jpg",
 };
 
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  const id = context.params!.id; // !로 params가 있을 것이다라고 단언해주면 됨
+  const book = await fetchOneBooks(Number(id)); // 그냥 id는 String 타입으로 가져오기 때문에 변환 필요
+
+  return {
+    props: {
+      book,
+    },
+  };
+};
+
 //optional catch all segment
-export default function Page() {
+export default function Page({
+  book,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  if (!book) return "문제가 발생했습니다. 다시 시도하세요.";
+
   const { id, title, subTitle, description, author, publisher, coverImgUrl } =
-    mockData;
+    book;
   return (
     <div>
       <div
