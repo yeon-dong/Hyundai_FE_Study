@@ -1,11 +1,12 @@
 import { ReactNode } from "react";
 import style from "./index.module.css";
 import SearchableLayout from "@/components/searchable-layout";
-import books from "@/mock/books.json"; // @는 src 폴더를 가르키는 거임임
+//import books from "@/mock/books.json"; // @는 src 폴더를 가르키는 거임임
 import BookItem from "@/components/book-item";
-import { InferGetServerSidePropsType, InferGetStaticPropsType } from "next";
+import { InferGetStaticPropsType } from "next";
 import fetchBooks from "@/lib/fetch-books";
 import fetchRandomBooks from "@/lib/fetch-random-books";
+// import { revalidatePath } from "next/cache";
 
 // export const getServerSideProps = async () => {
 //   // 컴포넌트보다 먼저 실행되어서, 컴포넌트에 필요한 데이터 불러오는 함수
@@ -39,6 +40,7 @@ export const getStaticProps = async () => {
       allBooks,
       recoBooks,
     },
+    //revalidate: 3, //ISR 방식대로 3초마다 재 생성 됨
   };
 };
 
