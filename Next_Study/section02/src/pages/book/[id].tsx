@@ -81,13 +81,13 @@ export default function Page({
         <Head>
           <title>한입북스</title>
           <meta property="og:title" content="/thumbnail" />
-          <meta property="og:title" content="한입북스스" />
+          <meta property="og:title" content="한입북스" />
           <meta
             property="og:description"
             content="한입 북스에 등록된 도서들을 만나보세요."
           />
         </Head>
-        <div>"로딩 중입니다."</div>
+        <div>로딩 중입니다.</div>
       </>
     ); // 이런식으로 로딩일 때를 확인 가능
   if (!book) return "문제가 발생했습니다. 다시 시도하세요.";
@@ -98,7 +98,7 @@ export default function Page({
     <>
       <Head>
         <title>{title}</title>
-        <meta property="og:title" content={coverImgUrl} />
+        <meta property="og:image" content={coverImgUrl} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
       </Head>
