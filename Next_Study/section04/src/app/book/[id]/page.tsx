@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import style from "./page.module.css";
 
 // const mockData = {
@@ -12,6 +13,12 @@ import style from "./page.module.css";
 //     "https://shopping-phinf.pstatic.net/main_3888828/38888282618.20230913071643.jpg",
 // };
 
+export const dynamicParams = true; // 기본 값이 true
+//어떤 파라미터들이 존재하는지 알려주면 된다. 빌드 타임에 렌더링이 된다.
+export function generateStaticParams() {
+  return [{ id: "1" }, { id: "2" }, { id: "3" }];
+}
+
 export default async function Page({
   params,
 }: {
@@ -22,6 +29,9 @@ export default async function Page({
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${id}`
   );
   if (!response.ok) {
+    if (response.status === 404) {
+      notFound();
+    }
     return <div>오류가 발생했습니다 ...</div>;
   }
 

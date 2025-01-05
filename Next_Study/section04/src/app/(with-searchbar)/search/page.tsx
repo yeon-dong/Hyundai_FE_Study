@@ -11,8 +11,9 @@ export default async function Page({
 }) {
   const { q } = await searchParams;
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/search?q=${q}`
-  );
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/search?q=${q}`,
+    { cache: "force-cache" }
+  ); // 한 번 검색이 된 것은 캐시 유지하는 방식
   if (!response.ok) {
     return <div>오류가 발생했습니다 ...</div>;
   }
