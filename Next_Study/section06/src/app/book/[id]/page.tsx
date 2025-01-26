@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import style from "./page.module.css";
+import { createReviewAction } from "@/actions/create-review.action";
 
 // const mockData = {
 //   id: 1,
@@ -53,22 +54,14 @@ async function BookDetail({ bookId }: { bookId: string }) {
     </section>
   );
 }
-
-function ReviewEditor() {
-  async function createReviewAction(formData: FormData) {
-    "use server";
-
-    const content = formData.get("content")?.toString(); // 굳이 타입이  FormDataEntryValue 일 필요 없어서 toString을 씀씀
-    const author = formData.get("author")?.toString();
-
-    console.log(content, author);
-  }
-
+// 2024 10월 이후 수강생은 hidden이 오류가 뜸 그래서 readOnly 추가 하면 됨
+function ReviewEditor({ bookId }: { bookId: string }) {
   return (
     <section>
       <form action={createReviewAction}>
-        <input name="content" placeholder="리뷰 내용" />
-        <input name="author" placeholder="작성자" />
+        <input name="bookId" value={bookId} hidden readOnly />
+        <input required name="content" placeholder="리뷰 내용" />
+        <input required name="author" placeholder="작성자" />
         <button type="submit">작성하기</button>
       </form>
     </section>
@@ -80,7 +73,7 @@ export default function Page({ params }: { params: { id: string } }) {
   return (
     <div className={style.container}>
       <BookDetail bookId={params.id} />
-      <ReviewEditor />
+      <ReviewEditor bookId={params.id} />
     </div>
   );
 }
