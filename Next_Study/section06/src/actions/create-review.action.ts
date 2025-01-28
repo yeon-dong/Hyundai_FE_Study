@@ -3,13 +3,17 @@ import { revalidatePath } from "next/cache";
 
 // 파일 따로 해줄때는 상단에 적으면 좋음.
 
-export async function createReviewAction(formData: FormData) {
+export async function createReviewAction(_: any, formData: FormData) {
+  // state 값을 같이 가져오기 때문에 _ any가 필요함
   const bookId = formData.get("bookId")?.toString(); // bookId도 formData로 같이 가져와야함 이제.
   const content = formData.get("content")?.toString(); // 굳이 타입이  FormDataEntryValue 일 필요 없어서 toString을 씀씀
   const author = formData.get("author")?.toString();
 
   if (!bookId || !content || !author) {
-    return;
+    return {
+      status: false,
+      error: "리뷰 내용과 작성자를 입력해주세요",
+    };
   }
 
   try {
@@ -36,9 +40,20 @@ export async function createReviewAction(formData: FormData) {
 
     // // 5. 태그 기준, 데이터 캐시 재검증
     // revalidatePath(`review-${bookId}`); // 데이터 캐시에 {next: {tags: [`review-${bookId}`]}} 를 이용해서 가능
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    return {
+      status: true,
+      error: "",
+    };
   } catch (err) {
     console.error(err);
-    return;
+    return {
+      status: false,
+      error: `리뷰 저장에 실패했습니다 : ${err}`,
+    };
   }
   //console.log(content, author);
 }
