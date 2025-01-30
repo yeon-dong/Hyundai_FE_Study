@@ -1,10 +1,11 @@
 import { notFound } from "next/navigation";
 import style from "./page.module.css";
 //import { createReviewAction } from "@/actions/create-review.action";
-import { ReviewData } from "@/types";
+import { BookData, ReviewData } from "@/types";
 import ReviewItem from "@/components/review-item";
 import { ReviewEditor } from "@/components/review-editor";
 import Image from "next/image";
+import { Metadata } from "next";
 
 // const mockData = {
 //   id: 1,
@@ -20,8 +21,19 @@ import Image from "next/image";
 
 export const dynamicParams = true; // 기본 값이 true
 //어떤 파라미터들이 존재하는지 알려주면 된다. 빌드 타임에 렌더링이 된다.
-export function generateStaticParams() {
-  return [{ id: "1" }, { id: "2" }, { id: "3" }];
+export async function generateStaticParams() {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book`
+  );
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  const books: BookData[] = await response.json();
+
+  return books.map((book) => ({ id: book.id.toString() }));
+
+  // return [{ id: "1" }, { id: "2" }, { id: "3" }];
 }
 
 async function BookDetail({ bookId }: { bookId: string }) {
@@ -82,6 +94,34 @@ async function ReviewList({ bookId }: { bookId: string }) {
       ))}
     </section>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  //현재 페이지 메타 데이터를 동적으로 생성하는 역할을 합니다.
+  const { id } = await params;
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${id}`
+  );
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  const book: BookData = await response.json();
+
+  return {
+    title: `${book.title} - 한입북스`,
+    description: `${book.description} 검색 결과입니다`,
+    openGraph: {
+      title: `${book.title} - 한입북스`,
+      description: `${book.description}`,
+      images: [book.coverImgUrl],
+    },
+  };
 }
 
 export default function Page({ params }: { params: { id: string } }) {

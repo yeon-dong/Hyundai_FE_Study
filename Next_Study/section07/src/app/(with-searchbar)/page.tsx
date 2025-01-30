@@ -6,6 +6,7 @@ import { delay } from "@/util/delay";
 import { Suspense } from "react";
 import BookItemSkeleton from "@/components/skeleton/book-item-skeleton";
 import BookListSkeleton from "@/components/skeleton/book-list-skeleton";
+import { Metadata } from "next";
 
 export const dynamic = "force-dynamic"; //잠깐 suspense를 보려고 설정해둠둠
 // 특정 페이지의 유형을 강제로 Static, Dynamic 페이지로 설정
@@ -55,6 +56,16 @@ async function RecoBooks() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "한입북스",
+  description: "한입 북스에 등록된 도서를 만나보세요",
+  openGraph: {
+    title: "한입 북스",
+    description: "한입 북스에 등록된 도서들을 만나보세요",
+    images: ["/thumbnail.png"],
+  },
+};
 
 export default async function Home() {
   // const response = await fetch(`http://localhost:12345/book`);
